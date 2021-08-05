@@ -9,17 +9,15 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        values = []
         current = head
+        prev = None
+        nextNode = None
         
         while current:
-            values.append(current.val)
-            current = current.next
+            nextNode = current.next
+            current.next = prev
+            prev = current
+            current = nextNode
             
-        current = head
-        while values:
-            current.val = values.pop()
-            current = current.next
-            
-        return head
+        return prev
             
