@@ -5,13 +5,17 @@ class Solution(object):
         :rtype: int
         """
         largest = 0
-
-        for j in range(len(s)):
-            visited = set()
-            for i in s[j:]:
-                if i in visited:
-                    break
-                visited.add(i)
-                largest = max(len(visited), largest)
+        visited = {}
+        l = 0
+        r = 0
+        
+        while r < len(s):
+            if s[r] in visited:
+                if visited[s[r]] >= l:
+                    l = visited[s[r]]+1
+            
+            visited[s[r]] = r
+            r += 1
+            largest = max(r - l, largest)
 
         return largest
