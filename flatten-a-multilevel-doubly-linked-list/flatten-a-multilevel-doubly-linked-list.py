@@ -32,4 +32,3 @@ class Solution(object):
             current = current.next
         
         return head
-    
