@@ -18,3 +18,4 @@ class Solution(object):
             visited.add(current)
             current = current.next
         return None
+    
