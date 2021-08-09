@@ -10,24 +10,25 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        tort = head
-        hare = head
-        meetNode = None
+        # Floyd's tortoise and Hare Algo
         
-        while tort and hare:
-            tort = tort.next
-            if hare.next == None:
-                return None
-            hare = hare.next.next
-            if hare == tort:
-                meetNode = hare
-                break
-                
-        if meetNode == None:
+        if head == None:
             return None
         
+        tort = head
+        hare = head
+        
+        while True:
+            tort = tort.next
+            hare = hare.next
+            if hare == None or hare.next == None:
+                return None
+            hare = hare.next
+            if hare == tort:
+                break
+        
         current = head
-        while current != meetNode:
+        while current != hare:
             current = current.next
-            meetNode = meetNode.next
+            hare = hare.next
         return current
