@@ -10,12 +10,24 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        tort = head
+        hare = head
+        meetNode = None
+        
+        while tort and hare:
+            tort = tort.next
+            if hare.next == None:
+                return None
+            hare = hare.next.next
+            if hare == tort:
+                meetNode = hare
+                break
+                
+        if meetNode == None:
+            return None
+        
         current = head
-        visited = set()
-        while current:
-            if current in visited:
-                return current
-            visited.add(current)
+        while current != meetNode:
             current = current.next
-        return None
-    
+            meetNode = meetNode.next
+        return current
