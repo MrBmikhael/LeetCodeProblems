@@ -18,17 +18,16 @@ class Solution(object):
         current = head
         
         while current:
-            flatChildren = None
             if current.child:
-                flatChildren = self.flatten(current.child)
+                childNode = current.child
                 newTail = current.next
-                current.next = flatChildren
-                flatChildren.prev = current
-                while flatChildren.next:
-                    flatChildren = flatChildren.next
-                flatChildren.next = newTail
+                current.next = childNode
+                childNode.prev = current
+                while childNode.next:
+                    childNode = childNode.next
+                childNode.next = newTail
                 if newTail:
-                    newTail.prev = flatChildren
+                    newTail.prev = childNode
                 current.child = None
             current = current.next
         
