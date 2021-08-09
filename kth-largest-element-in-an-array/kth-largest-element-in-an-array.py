@@ -34,4 +34,3 @@ class Solution(object):
         """
         index = len(nums)-k
         return self.quickSelect(nums, 0, len(nums)-1, index)
-        
