@@ -1,5 +1,4 @@
 class Solution(object):
-    
     def binarySearch(self, nums, left, right, target):
         while left <= right:
             mid = (left+right)//2
@@ -36,4 +35,3 @@ class Solution(object):
             end = self.binarySearch(nums, end+1, len(nums)-1, target)
         
         return [tempStart, tempEnd]
-        
