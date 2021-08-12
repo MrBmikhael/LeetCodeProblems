@@ -21,6 +21,7 @@ class Solution(object):
                     break
             if len(currentWordList) == 0:
                 output.append(i)
+                i += wordLen
             currentWordList = words[:]
             
         return output
