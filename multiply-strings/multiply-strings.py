@@ -5,4 +5,12 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
-        return str(int(num1) * int(num2))
+        
+        def convertToInt(s):
+            out = 0
+            for i in s:
+                out *= 10
+                out += (ord(i) - ord('0'))
+            return out
+        
+        return str(convertToInt(num1)*convertToInt(num2))
