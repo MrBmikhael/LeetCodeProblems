@@ -6,15 +6,6 @@ class Solution(object):
         :rtype: List[int]
         """
         nums.sort()
-        r = len(nums)-1
-        l = 0
-        output = list()
-        
-        while l <= r:
-            output.append(nums[l])
-            l += 1
-            
-            if l <= r:
-                output.append(nums[r])
-                r -= 1
-        return output
+        for i in range(1, len(nums), 2):
+            nums[i], nums[i-1] = nums[i-1], nums[i]
+        return nums
