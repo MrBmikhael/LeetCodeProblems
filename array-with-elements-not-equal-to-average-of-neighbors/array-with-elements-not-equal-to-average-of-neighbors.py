@@ -6,14 +6,15 @@ class Solution(object):
         :rtype: List[int]
         """
         nums.sort()
-        mid = int(math.ceil(len(nums) / 2))
-        numsA = nums[:mid]
-        numsB = nums[mid:]
+        r = len(nums)-1
+        l = 0
         output = list()
         
-        for i in range(len(nums)):
-            if i % 2 == 0:
-                output.append(numsB.pop())
-            else:
-                output.append(numsA.pop())
+        while l <= r:
+            output.append(nums[l])
+            l += 1
+            
+            if l <= r:
+                output.append(nums[r])
+                r -= 1
         return output
