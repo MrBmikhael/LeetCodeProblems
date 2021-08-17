@@ -60,7 +60,6 @@ class Solution(object):
         
         if lHeight == rHeight:
             return (2**lHeight)-1
-        else:
-            lastLevel = self.binarySearch(root, lHeight-1)
-            return (2**(lHeight-1)) + lastLevel
+        lastLevel = self.binarySearch(root, lHeight-1)
+        return (2**(lHeight-1)) + lastLevel
             
