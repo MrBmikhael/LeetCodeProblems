@@ -25,3 +25,4 @@ class Solution(object):
         if not root:
             return True
         return self.dfs(root, float('-inf'), float('inf'))
+    
