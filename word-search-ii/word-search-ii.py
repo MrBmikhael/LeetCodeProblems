@@ -1,5 +1,4 @@
 class Solution(object):
-    
     def validLocation(self, board, newLocation):
         if newLocation[0] < 0 or newLocation[0] >= len(board) or newLocation[1] < 0 or newLocation[1] >= len(board[0]):
             return None
