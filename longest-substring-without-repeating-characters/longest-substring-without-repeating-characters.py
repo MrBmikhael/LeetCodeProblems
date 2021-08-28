@@ -13,9 +13,7 @@ class Solution(object):
             if s[r] in visited:
                 if visited[s[r]] >= l:
                     l = visited[s[r]]+1
-            
             visited[s[r]] = r
             r += 1
             largest = max(r - l, largest)
-
         return largest
