@@ -18,5 +18,4 @@ class Solution(object):
                 return False
             x = (x % div) // 10
             div = div / 100
-            
         return True
