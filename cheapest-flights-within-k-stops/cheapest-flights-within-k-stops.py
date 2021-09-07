@@ -18,7 +18,7 @@ class Solution(object):
                     tmpDestArr[d] = destArr[s] + p
             destArr = tmpDestArr
             
-        if destArr[dst] == float("inf") or destArr[dst] == 0:
+        if destArr[dst] == float("inf"):
             return -1
         else:
             return destArr[dst]
