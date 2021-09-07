@@ -51,38 +51,32 @@ class LockingTree(object):
         :rtype: bool
         """
         
-        # The node is unlocked,
-        if self.nodes[num].lock:
-            return False
-        
         # It does not have any locked ancestors
-        parent = self.nodes[num].parent
+        parent = num
         while parent != -1:
             if self.nodes[parent].lock:
                 return False
             parent = self.nodes[parent].parent
         
         # It has at least one locked descendant (by any user)
-        lockedNodes = []
         parents = [num]
+        lockedNodes = 0
         
         while parents:
             parent = parents.pop(0)
             for c in self.nodes[parent].children:
                 parents.append(c)
                 if self.nodes[c].lock:
-                    lockedNodes.append(c)
+                    lockedNodes += 1
+                    self.nodes[c].lock = False
+                    self.nodes[c].userLock = -1
 
-        if not lockedNodes:
+        if lockedNodes == 0:
             return False
         
         self.nodes[num].lock = True
         self.nodes[num].lockUser = user
         
-        for i in lockedNodes:
-            self.nodes[i].lock = False
-            self.nodes[i].userLock = -1
-            
         return True
         
 
