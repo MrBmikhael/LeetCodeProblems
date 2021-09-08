@@ -12,6 +12,4 @@ class Solution:
             if i != headID:
                 adjList[manager[i]].append(i)
 
-        minutes = self.dfs(adjList, informTime, headID)
-        
-        return minutes
+        return self.dfs(adjList, informTime, headID)
