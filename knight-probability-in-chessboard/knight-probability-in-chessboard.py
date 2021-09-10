@@ -1,19 +1,5 @@
 class Solution(object):
-    directions = [[-2,-1],[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2]]
-    def recurse(self, n,k,r,c,dp):
-        if r < 0 or r >= n or c < 0 or c>= n:
-            return 0
-        if k == 0:
-            return 1
-        if dp[k][r][c]:
-            return dp[k][r][c]
-        res = 0
-        for i in self.directions:
-            res += self.recurse(n,k-1,r+i[0],c+i[1],dp)/8.0
-        dp[k][r][c] = res
-        return res
-    
-    def knightProbability(self, n, k, row, column):
+    def knightProbability(self, n, k, r, c):
         """
         :type n: int
         :type k: int
@@ -21,8 +7,23 @@ class Solution(object):
         :type column: int
         :rtype: float
         """
+        directions = [[-2,-1],[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2]]
+        dp = [ [ [0.0]*n for i in range(n)] for _ in range(k+1) ]
+        dp[0][r][c] = 1.0
         
-        dp = [ [ [None]*n for i in range(n)] for _ in range(k+1) ]
-        return self.recurse(n,k,row,column,dp)
-        
+        for i in range(k):
+            for j in range(n):
+                for t in range(n):
+                    total = 0.0
+                    for d in directions:
+                        newLocation = [j+d[0], t+d[1]]
+                        lim = set(range(n))
+                        if newLocation[0] in lim and newLocation[1] in lim:
+                            dp[i+1][j][t] += dp[i][newLocation[0]][newLocation[1]]/8.0
+
+        res = 0
+        for i in range(n):
+            for j in range(n):
+                res += dp[k][i][j]
+        return res
         
