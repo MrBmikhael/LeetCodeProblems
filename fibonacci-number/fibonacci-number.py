@@ -4,13 +4,15 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        dp = [0,1]
-        dp += [0] * n
         
         if n < 2:
-            return dp[n]
+            return n
+        
+        dpOne = 0
+        dpTwo = 1
         
         for i in range(2, n+1):
-            dp[i] = dp[i-1] + dp[i-2]
+            dpOne = dpOne + dpTwo
+            dpTwo, dpOne = dpOne, dpTwo
         
-        return dp[n]
+        return dpTwo
