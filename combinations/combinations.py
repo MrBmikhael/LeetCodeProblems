@@ -18,5 +18,4 @@ class Solution(object):
                 comb.pop()
                 
         backtrack(1, [])
-        
         return res
