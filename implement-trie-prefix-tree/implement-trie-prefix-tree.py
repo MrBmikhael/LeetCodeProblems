@@ -1,7 +1,6 @@
 class Trie(object):
     class Node:
-        def __init__(self, name):
-            self.name = name
+        def __init__(self):
             self.keys = dict()
             self.end = False
 
@@ -9,7 +8,7 @@ class Trie(object):
         """
         Initialize your data structure here.
         """
-        self.root = self.Node('root')
+        self.root = self.Node()
 
     def insert(self, word):
         """
@@ -20,7 +19,7 @@ class Trie(object):
         node = self.root
         for i in range(len(word)):
             if word[i] not in node.keys:
-                node.keys[word[i]] = self.Node(word[i])
+                node.keys[word[i]] = self.Node()
             node = node.keys[word[i]]
             if i == len(word)-1:
                 node.end = True
