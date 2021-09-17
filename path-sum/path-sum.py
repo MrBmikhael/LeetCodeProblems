@@ -11,13 +11,9 @@ class Solution(object):
         :type targetSum: int
         :rtype: bool
         """
-        
-        def dfs(node, currentSum):
-            if not node:
-                return False
-            newSum = currentSum + node.val
-            if newSum == targetSum and not node.left and not node.right:
-                return True
-            return dfs(node.left, newSum) or dfs(node.right, newSum)
-        
-        return dfs(root, 0)
+        if not root:
+            return False
+        newSum = targetSum - root.val
+        if newSum == 0 and not root.left and not root.right:
+            return True
+        return self.hasPathSum(root.left, newSum) or self.hasPathSum(root.right, newSum)
