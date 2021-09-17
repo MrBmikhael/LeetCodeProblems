@@ -12,5 +12,4 @@ class Solution(object):
             highest = max(elements)
             lowest = min(elements)
             lowestDiff = min(lowestDiff, (highest-lowest))
-            
         return lowestDiff
